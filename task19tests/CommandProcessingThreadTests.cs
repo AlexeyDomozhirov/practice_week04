@@ -29,8 +29,8 @@ public class CommandProcessingThreadTests
         var scheduler = new RoundRobinScheduler();
         var processor = new CommandProcessingThread(boundedCapacity: 10, scheduler);
 
-        var cmd1 = new TestCommand(1, maxExecutions: 100);
-        var cmd2 = new TestCommand(2, maxExecutions: 100);
+        var cmd1 = new TestCommand(1, maxExecutions: 1000);
+        var cmd2 = new TestCommand(2, maxExecutions: 1000);
         scheduler.Add(cmd1);
         scheduler.Add(cmd2);
 
