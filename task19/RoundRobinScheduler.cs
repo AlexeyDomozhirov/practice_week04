@@ -1,4 +1,4 @@
-namespace task18;
+namespace task19;
 
 public class RoundRobinScheduler : IScheduler
 {
@@ -7,4 +7,5 @@ public class RoundRobinScheduler : IScheduler
     public bool HasCommand() => _commands.Count > 0;
     public ICommand Select() => _commands.Dequeue();
     public void Add(ICommand cmd) => _commands.Enqueue(cmd);
+    public void Clear() => _commands.Clear();
 }

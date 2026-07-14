@@ -1,4 +1,4 @@
-namespace task18;
+namespace task19;
 
 public interface IRepeatableCommand : ICommand
 {
