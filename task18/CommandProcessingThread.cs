@@ -2,7 +2,6 @@ namespace task18;
 
 using System;
 using System.Collections.Concurrent;
-using System.Threading;
 
 public class CommandProcessingThread : IDisposable
 {
@@ -16,6 +15,9 @@ public class CommandProcessingThread : IDisposable
 
     public CommandProcessingThread(int boundedCapacity, IScheduler scheduler)
     {
+        if (boundedCapacity <= 0) 
+            throw new ArgumentOutOfRangeException(nameof(boundedCapacity));
+
         _queue = new BlockingCollection<ICommand>(new ConcurrentQueue<ICommand>(), boundedCapacity);
         _scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
         _cts = new CancellationTokenSource();
@@ -46,22 +48,22 @@ public class CommandProcessingThread : IDisposable
 
     public void Stop()
     {
-        if (Interlocked.Exchange(ref _isStopped, 1) == 1 || _isStarted == 0)
-        {
-            return; 
-        }
-
+        if (Interlocked.Exchange(ref _isStopped, 1) == 1 || Volatile.Read(ref _isStarted) == 0)
+            return;
+    
         _cts.Cancel();
-        
-        _queue.CompleteAdding();
-        
-            try
+    
+        try
         {
             _queue.Add(new StopCommand());
         }
-        catch (InvalidOperationException) {}
-
+        catch (InvalidOperationException) { }
+    
+        _queue.CompleteAdding();
+    
         _worker?.Join();
+    
+        Interlocked.Exchange(ref _isStarted, 0);
     }
 
     private void WorkLoop()
