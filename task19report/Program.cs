@@ -1,4 +1,4 @@
-﻿namespace task19benchmark;
+﻿namespace task19report;
 
 using task19;
 
@@ -41,6 +41,6 @@ class Program
         report += $"Все команды завершены: {allFinished}\n";
         report += "Выполнена демонстрация HardStop после завершения команд.\n";
 
-        File.WriteAllText("task19_results.txt", report);
+        File.WriteAllText("task19_report.txt", report);
     }
 }

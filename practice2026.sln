@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task19", "task19\task19.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task19tests", "task19tests\task19tests.csproj", "{80BB5156-A5CE-4A9C-A25E-3644579D2C26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task19benchmark", "task19benchmark\task19benchmark.csproj", "{55AC80F2-BFDA-4A27-8544-03154D42DF83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task19benchmark", "task19report\task19report.csproj", "{55AC80F2-BFDA-4A27-8544-03154D42DF83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
