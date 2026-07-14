@@ -3,11 +3,7 @@
 using System.Threading;
 using Xunit;
 using task19;
-
-using System;
 using System.Collections.Generic;
-using System.Threading;
-using Xunit;
 
 public class CommandProcessingThreadTests
 {
